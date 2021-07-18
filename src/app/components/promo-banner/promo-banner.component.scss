@@ -1,0 +1,39 @@
+@use "../../../styles/variables" as *;
+
+.promo-banner {
+  width: 100%;
+  padding: $spacer-4 0;
+}
+
+.promo-image {
+  width: 100%;
+  max-width: 60rem;
+  height: auto;
+  max-height: 58rem;
+}
+
+.promo-banner-message {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.appointment-btn-wrapper {
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 576px) {
+    display: block;
+    justify-content: center;
+  }
+}
+
+#makeAppointmentBtn {
+  max-width: 20rem;
+  height: 4.8rem;
+  background-color: rgb(255, 210, 1);
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  padding: 0 $spacer-3;
+}

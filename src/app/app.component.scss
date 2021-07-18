@@ -1,0 +1,236 @@
+@use "../styles/variables" as *;
+
+// .nav_primary {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   padding: $spacer-1 0;
+//   background-color: $purple-light;
+//   width: 100%;
+//   // filter: drop-shadow(0 10px 20px #ccd2ff);
+// }
+
+// .profile-picture {
+//   display: flex;
+//   margin-bottom: $spacer-1;
+//   width: 8rem;
+//   height: 8rem;
+//   border-radius: 4rem;
+// }
+
+// .app-title {
+//   display: flex;
+//   font-size: $text-xl;
+//   font-weight: 600;
+//   text-decoration: none;
+//   text-transform: uppercase;
+//   color: $black;
+// }
+
+// .nav-items {
+//   display: flex;
+//   flex-direction: row;
+//   list-style-type: none;
+// }
+
+// .nav-item {
+//   display: inline-block;
+//   padding: $spacer-2 $spacer-2 0 $spacer-2;
+
+//   a {
+//     text-decoration: none;
+//     color: $black;
+//     font-weight: 600;
+
+//     &:hover {
+//       text-decoration: underline;
+//     }
+//   }
+// }
+
+.welcome-card {
+  height: 6.4rem;
+}
+
+.nav {
+  justify-content: center;
+  width: 100%;
+  background-color: $purple-light;
+  height: 7.2rem;
+
+  @media (min-width: 992px) {
+    height: 8.4rem;
+  }
+}
+
+.nav-wrapper, .app-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 120rem;
+  margin: 0;
+  padding: 0 $spacer-3;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  .nav-items {
+    display: none;
+
+    @media (min-width: 992px) {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .nav-item {
+    margin: 0 0.8rem;
+    height: 4.8rem;
+
+    .nav-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $black;
+      font-weight: 600;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      border-radius: 0.4rem;
+    }
+
+    .nav-link-cta {
+      background-color: rgba(255, 210, 1);
+    }
+  }
+}
+
+.nav-image {
+  width: 6rem;
+  height: 6rem;
+  margin-right: $spacer-1;
+  border-radius: 50%;
+  border: 0.4rem solid $white;
+  box-shadow: 2px 2px 8px -2px rgba(214,214,214,1);
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  width: calc(100% - 6rem);
+  height: 100%;
+  line-height: 1;
+  color: $black;
+  font-size: $text-xl;
+  font-weight: 600;
+  text-decoration: none;
+
+  @media (min-width: 576px) {
+    width: auto;
+  }
+}
+
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 5rem;
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  mat-icon {
+    height: auto;
+    width: auto;
+    font-size: $text-xxxl;
+  }
+}
+
+.nav-mobile {
+  background-color: $white;
+  width: 100%;
+  height: calc(100vh - 7.2rem);
+  padding: 0 $spacer-2;
+  overflow-y: scroll;
+  position: absolute;
+  top: 7.2rem;
+  left: 0;
+  z-index: 99;
+
+  // &.nav-mobile-fade-in {
+  //   display: block;
+  //   opacity: 1;
+  //   animation-name: fadeInOpacity;
+  //   animation-iteration-count: 1;
+  //   animation-timing-function: ease-in;
+  //   animation-duration: 0.3s;
+  // }
+
+  // @keyframes fadeInOpacity {
+  //   0% {
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
+
+  // &.nav-mobile-fade-out {
+  //   animation-name: fadeOutOpacity;
+  //   animation-iteration-count: 1;
+  //   animation-timing-function: ease-out;
+  //   animation-duration: 0.3s;
+  // }
+
+  // @keyframes fadeOutOpacity {
+  //   0% {
+  //     opacity: 1;
+  //   }
+  //   100% {
+  //     opacity: 0;
+  //     display: none;
+  //   }
+  // }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin-top: $spacer-3;
+  }
+
+  .nav-item {
+    margin: $spacer-3;
+    font-size: $text-xl;
+    font-weight: 600;
+
+    .nav-link {
+      color: $black;
+    }
+  }
+
+  @media (min-width: 992px) {
+    display: none;
+  }
+}
+
+.app-content {
+  width: 100%;
+}
+
+app-promo-banner {
+  width: 100%;
+}

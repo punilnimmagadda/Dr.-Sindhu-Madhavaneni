@@ -1,0 +1,74 @@
+@use "fonts";
+@use "variables" as *;
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: $black;
+  background-color: $white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 1.6rem;
+}
+
+// text sizes
+.text-xs {
+  font-size: 1rem;
+}
+
+.text-sm {
+  font-size: 1.2rem;
+}
+
+.text-md {
+  font-size: 1.4rem;
+}
+
+.text-lg {
+  font-size: 1.6rem;
+}
+
+.text-xl {
+  font-size: 2rem;
+}
+
+.text-xxl {
+  font-size: 2.4rem;
+}
+
+.text-xxxl {
+  font-size: 3.2rem;
+}
+
+// font weight
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-weight-normal {
+  font-weight: 400;
+}
+
+.font-weight-bold {
+  font-weight: 500;
+}
+
+.font-weight-bolder {
+  font-weight: 600;
+}
+
+// text align
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
