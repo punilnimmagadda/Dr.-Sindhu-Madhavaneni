@@ -1,54 +1,5 @@
 @use "../styles/variables" as *;
 
-// .nav_primary {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   padding: $spacer-1 0;
-//   background-color: $purple-light;
-//   width: 100%;
-//   // filter: drop-shadow(0 10px 20px #ccd2ff);
-// }
-
-// .profile-picture {
-//   display: flex;
-//   margin-bottom: $spacer-1;
-//   width: 8rem;
-//   height: 8rem;
-//   border-radius: 4rem;
-// }
-
-// .app-title {
-//   display: flex;
-//   font-size: $text-xl;
-//   font-weight: 600;
-//   text-decoration: none;
-//   text-transform: uppercase;
-//   color: $black;
-// }
-
-// .nav-items {
-//   display: flex;
-//   flex-direction: row;
-//   list-style-type: none;
-// }
-
-// .nav-item {
-//   display: inline-block;
-//   padding: $spacer-2 $spacer-2 0 $spacer-2;
-
-//   a {
-//     text-decoration: none;
-//     color: $black;
-//     font-weight: 600;
-
-//     &:hover {
-//       text-decoration: underline;
-//     }
-//   }
-// }
-
 .welcome-card {
   height: 6.4rem;
 }
@@ -64,13 +15,13 @@
   }
 }
 
-.nav-wrapper, .app-content {
+.nav-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
   max-width: 120rem;
   margin: 0;
-  padding: 0 $spacer-3;
+  padding: 0 $spacer-2;
 }
 
 .nav-bar {
@@ -229,6 +180,9 @@
 
 .app-content {
   width: 100%;
+  max-width: 120rem;
+  margin: 0;
+  padding: 0 $spacer-2;
 }
 
 app-promo-banner {
