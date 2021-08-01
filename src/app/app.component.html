@@ -20,7 +20,7 @@
               <a class="nav-link" href="#">Contact Us</a>
           </div>
           <div class="nav-item nav-item-cta">
-              <a class="nav-link nav-link-cta" href="#">Make Appointment</a>
+            <button mat-flat-button class="me-4 make-appointment-btn" color="accent" [scrollTo]="'bookingSection'">Make Appointment</button>
           </div>
           <!-- <div class="nav-item nav-item-link">
               <a class="nav-link" href="#">Working Hours</a>
@@ -50,80 +50,12 @@
   </nav>
   <main class="container-fluid p-0 d-flex justify-content-center">
     <section class="app-content">
-      <app-promo-banner></app-promo-banner>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div id="bookingSection">This is booking section</div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <div class="wrapper">
+        <app-promo-banner></app-promo-banner>
+      </div>
+      <div class="wrapper">
+        <app-booking></app-booking>
+      </div>
     </section>
   </main>
   <footer class="app-footer"></footer>
