@@ -9,10 +9,6 @@ export class PromoBannerComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  scroll(targetId: string) {
-    document.querySelector(`#${targetId}`)?.scrollIntoView({behavior: 'smooth'});
-  }
 }
