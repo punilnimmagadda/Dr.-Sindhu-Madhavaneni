@@ -4,7 +4,7 @@
       <h1 class="pb-3">Book Your Appointment</h1>
       <p class="mb-5">Book your appointment in just 3 simple steps</p>
       <mat-accordion>
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel #step1 [expanded]="step === 1" (opened)="setStep(1)">
 
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -20,7 +20,7 @@
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker disabled="false"></mat-datepicker>
               <mat-hint>*Required</mat-hint>
-              <mat-error *ngIf="step1FormGroup.get('datePicker').hasError('required')">You must select a date</mat-error>
+              <mat-error *ngIf="step1FormGroup.get('datePicker').hasError('required')">You must select a date.</mat-error>
             </mat-form-field>
 
             <!-- Time Picker -->
@@ -30,16 +30,16 @@
                 <mat-option *ngFor="let time of availableTimeList" [value]="time">{{time}}</mat-option>
               </mat-select>
               <mat-hint>*Required</mat-hint>
-              <mat-error *ngIf="step1FormGroup.get('timePicker').hasError('required')">You must select a time</mat-error>
+              <mat-error *ngIf="step1FormGroup.get('timePicker').hasError('required')">You must select a time.</mat-error>
             </mat-form-field>
-
           </form>
+
           <mat-action-row>
             <button mat-flat-button color="primary" class="me-4" type="submit" (click)="nextStep()" [disabled]="!step1FormGroup.valid">Next</button>
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+        <mat-expansion-panel #step2 [expanded]="step === 2" (opened)="setStep(2)" [disabled]="!step1FormGroup.valid">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <h3 class="my-4">Step 2: Personal Information</h3>
@@ -47,11 +47,56 @@
           </mat-expansion-panel-header>
 
           <form [formGroup]="step2FormGroup" (ngSubmit)="onStep2FormSubmit(step2FormGroup.value)">
+            <!-- First Name -->
+            <mat-form-field class="mb-4 me-4" appearance="fill">
+              <mat-label>Firstname</mat-label>
+              <input type="text" matInput formControlName="firstnameInput" [(ngModel)]="booking.firstName">
+              <mat-hint>*Required</mat-hint>
+              <mat-error *ngIf="step2FormGroup.get('firstnameInput').hasError('required')">
+                FirstName is required
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Last Name -->
+            <mat-form-field class="mb-4 me-4" appearance="fill">
+              <mat-label>Lastname</mat-label>
+              <input type="text" matInput formControlName="lastnameInput" [(ngModel)]="booking.lastName">
+              <mat-hint>*Required</mat-hint>
+              <mat-error *ngIf="step2FormGroup.get('lastnameInput').hasError('required')">
+                Lastname is required
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Age -->
+            <mat-form-field class="mb-4 me-4 mat-input-lg" appearance="fill">
+              <mat-label>Age</mat-label>
+              <input type="number" matInput formControlName="ageInput" min="1" max="99" [(ngModel)]="booking.age">
+              <mat-hint>*Required</mat-hint>
+              <mat-error *ngIf="step2FormGroup.get('ageInput').hasError('required')">
+                Age is required
+              </mat-error>
+              <mat-error *ngIf="(step2FormGroup.get('ageInput').hasError('min') || step2FormGroup.get('ageInput').hasError('max')) && !step2FormGroup.get('ageInput').hasError('required')">
+                Age must range between 1 and 99
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Gender -->
+            <mat-form-field class="mb-4 me-4 mat-input-lg" appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="genderPicker" (selectionChange)="onGenderSelection($event)" [errorStateMatcher]="matcher">
+                <mat-option *ngFor="let gender of genderList" [value]="gender">{{gender}}</mat-option>
+              </mat-select>
+              <mat-hint>*Required</mat-hint>
+              <mat-error *ngIf="step2FormGroup.get('genderPicker').hasError('required')">You must select your gender.</mat-error>
+            </mat-form-field>
+
+            <br>
+
             <!-- Contact Number -->
             <mat-form-field class="mb-4 me-4" appearance="fill">
               <mat-label>Telephone</mat-label>
               <span matPrefix>+91 &nbsp;</span>
-              <input type="tel" matInput formControlName="telephoneInput" placeholder="9876543210" minlength="10" maxlength="10">
+              <input type="tel" matInput formControlName="telephoneInput" placeholder="9876543210" minlength="10" maxlength="10" [(ngModel)]="booking.phoneNumber">
               <mat-hint>*Required</mat-hint>
               <mat-error *ngIf="step2FormGroup.get('telephoneInput').hasError('required')">
                 Please enter a valid telephone number
@@ -59,9 +104,9 @@
             </mat-form-field>
 
             <!-- Email Address -->
-            <mat-form-field class="mb-4 me-4" appearance="fill">
+            <mat-form-field class="mb-4 me-4 mat-input-xl" appearance="fill">
               <mat-label>Email</mat-label>
-              <input type="email" matInput formControlName="emailInput" placeholder="Ex. pat@example.com">
+              <input type="email" matInput formControlName="emailInput" placeholder="Ex. pat@example.com" [(ngModel)]="booking.emailAddress">
               <mat-hint>*Required</mat-hint>
               <mat-error *ngIf="step2FormGroup.get('emailInput').hasError('required')">
                 Email is required
@@ -78,15 +123,34 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+        <mat-expansion-panel #step3 [expanded]="step === 3" (opened)="setStep(3)" [disabled]="!step1FormGroup.valid || !step2FormGroup.valid">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <h3 class="my-4">Step 3: Confirm Appointment</h3>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <div>
-
+          <div *ngIf="booking.firstName && booking.lastName" class="font-weight-bold">
+            {{booking.firstName}} {{booking.lastName}}
+          </div>
+          <div *ngIf="booking.age">
+            Age: {{booking.age}}
+          </div>
+          <div *ngIf="booking.gender">
+            Gender: {{booking.gender}}
+          </div>
+          <div *ngIf="booking.phoneNumber">
+            Phone: {{booking.phoneNumber}}
+          </div>
+          <div *ngIf="booking.emailAddress">
+            Email: {{booking.emailAddress}}
+          </div>
+          <br><br>
+          <div *ngIf="booking.bookingDate">
+            Date: {{booking.bookingDate | date:"dd/MM/yy"}}
+          </div>
+          <div *ngIf="booking.bookingTime">
+            Time: {{booking.bookingTime}}
           </div>
 
           <mat-action-row>
@@ -103,7 +167,7 @@
         <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
         <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
       </svg>
-      <p class="text-align-center">Your appointment is confirmed for {{selectedDate | date:"MM/dd/yy"}} at {{selectedTime}}. We will give you a call at the scheduled time. Please have your documents ready, if any. Thank you!</p>
+      <p class="text-align-center">Your appointment is confirmed for {{this.booking.bookingDate | date:"dd/MM/yy"}} at {{this.booking.bookingTime}}. We will give you a call at the scheduled time. Please have your documents ready, if any. Thank you!</p>
 
       <div class="next-steps">
         <h1 class="mb-4 text-align-center">What's next?</h1>
